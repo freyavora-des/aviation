@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id                  String   @id @default(cuid())
+  email               String   @unique
+  username            String   @unique
+  passwordHash        String
+  selectedAirportIata String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  cards Card[]
+}
+
+model Card {
+  id        String   @id @default(cuid())
+  userId    String
+  category  String   // "credit", "debit", "priority-pass", "other"
+  program   String   // e.g. "Priority Pass", "Amex Platinum", "Visa Infinite"
+  label     String?  // user-friendly name
+  last4     String?  // optional; do NOT store full PAN
+  source    String   // "scan" | "manual"
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
