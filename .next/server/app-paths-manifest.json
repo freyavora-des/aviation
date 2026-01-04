@@ -1,16 +1,23 @@
 {
   "/_global-error/page": "app/_global-error/page.js",
   "/_not-found/page": "app/_not-found/page.js",
+  "/api/airports/nearest/route": "app/api/airports/nearest/route.js",
+  "/api/airports/search/route": "app/api/airports/search/route.js",
   "/api/auth/login/route": "app/api/auth/login/route.js",
   "/api/auth/logout/route": "app/api/auth/logout/route.js",
   "/api/auth/signup/route": "app/api/auth/signup/route.js",
   "/api/cards/route": "app/api/cards/route.js",
+  "/api/onboarding/airport/route": "app/api/onboarding/airport/route.js",
   "/api/settings/airport/route": "app/api/settings/airport/route.js",
   "/cards/new/page": "app/cards/new/page.js",
   "/cards/page": "app/cards/page.js",
   "/dashboard/page": "app/dashboard/page.js",
   "/login/page": "app/login/page.js",
+  "/lounges/page": "app/lounges/page.js",
+  "/onboarding/cards/page": "app/onboarding/cards/page.js",
+  "/onboarding/location/page": "app/onboarding/location/page.js",
   "/page": "app/page.js",
+  "/scan/page": "app/scan/page.js",
   "/settings/page": "app/settings/page.js",
   "/signup/page": "app/signup/page.js"
 }

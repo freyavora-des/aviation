@@ -41,6 +41,18 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/api/airports/nearest",
+      "regex": "^/api/airports/nearest(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/airports/nearest(?:/)?$"
+    },
+    {
+      "page": "/api/airports/search",
+      "regex": "^/api/airports/search(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/airports/search(?:/)?$"
+    },
+    {
       "page": "/api/auth/login",
       "regex": "^/api/auth/login(?:/)?$",
       "routeKeys": {},
@@ -63,6 +75,12 @@
       "regex": "^/api/cards(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/cards(?:/)?$"
+    },
+    {
+      "page": "/api/onboarding/airport",
+      "regex": "^/api/onboarding/airport(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/onboarding/airport(?:/)?$"
     },
     {
       "page": "/api/settings/airport",
@@ -93,6 +111,30 @@
       "regex": "^/login(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/login(?:/)?$"
+    },
+    {
+      "page": "/lounges",
+      "regex": "^/lounges(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/lounges(?:/)?$"
+    },
+    {
+      "page": "/onboarding/cards",
+      "regex": "^/onboarding/cards(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/onboarding/cards(?:/)?$"
+    },
+    {
+      "page": "/onboarding/location",
+      "regex": "^/onboarding/location(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/onboarding/location(?:/)?$"
+    },
+    {
+      "page": "/scan",
+      "regex": "^/scan(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/scan(?:/)?$"
     },
     {
       "page": "/settings",

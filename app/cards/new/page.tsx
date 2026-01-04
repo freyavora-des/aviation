@@ -2,16 +2,23 @@ import { redirect } from "next/navigation";
 
 import { getCurrentUser } from "@/lib/auth";
 
-export default async function NewCardPage() {
+export default async function NewCardPage({
+  searchParams,
+}: {
+  searchParams?: { next?: string };
+}) {
   const user = await getCurrentUser();
   if (!user) redirect("/login");
+
+  const next = typeof searchParams?.next === "string" ? searchParams?.next : undefined;
+  const action = next ? `/api/cards?next=${encodeURIComponent(next)}` : "/api/cards";
 
   return (
     <main className="mx-auto max-w-xl px-6 py-12">
       <h1 className="text-2xl font-semibold">Add card</h1>
       <p className="mt-2 text-slate-300">Store only safe metadata (never full PAN).</p>
 
-      <form className="mt-8 space-y-4" action="/api/cards" method="post">
+      <form className="mt-8 space-y-4" action={action} method="post">
         <label className="block">
           <span className="text-sm text-slate-200">Category</span>
           <select

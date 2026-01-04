@@ -18,6 +18,9 @@ export async function POST(req: Request) {
   const user = await getCurrentUser();
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
+  const url = new URL(req.url);
+  const next = url.searchParams.get("next") || "/cards";
+
   const form = await req.formData();
   const category = String(form.get("category") ?? "").trim();
   const program = String(form.get("program") ?? "").trim();
@@ -40,6 +43,6 @@ export async function POST(req: Request) {
     },
   });
 
-  return NextResponse.redirect(new URL("/cards", req.url), { status: 303 });
+  return NextResponse.redirect(new URL(next, req.url), { status: 303 });
 }
 

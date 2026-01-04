@@ -1,16 +1,23 @@
 {
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
+  "/api/airports/nearest/route": "/api/airports/nearest",
+  "/api/airports/search/route": "/api/airports/search",
   "/api/auth/login/route": "/api/auth/login",
   "/api/auth/logout/route": "/api/auth/logout",
   "/api/auth/signup/route": "/api/auth/signup",
   "/api/cards/route": "/api/cards",
+  "/api/onboarding/airport/route": "/api/onboarding/airport",
   "/api/settings/airport/route": "/api/settings/airport",
   "/cards/new/page": "/cards/new",
   "/cards/page": "/cards",
   "/dashboard/page": "/dashboard",
   "/login/page": "/login",
+  "/lounges/page": "/lounges",
+  "/onboarding/cards/page": "/onboarding/cards",
+  "/onboarding/location/page": "/onboarding/location",
   "/page": "/",
+  "/scan/page": "/scan",
   "/settings/page": "/settings",
   "/signup/page": "/signup"
 }
