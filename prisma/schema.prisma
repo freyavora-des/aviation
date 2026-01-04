@@ -35,3 +35,54 @@ model Card {
 
   @@index([userId])
 }
+
+model Airport {
+  iata    String @id
+  name    String
+  city    String
+  country String
+  lat     Float
+  lon     Float
+
+  lounges Lounge[]
+}
+
+model Lounge {
+  id           String   @id @default(cuid())
+  airportIata  String
+  type         String   // "lounge" | "service"
+  name         String
+  terminal     String
+  locationHint String
+  address      String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  airport          Airport          @relation(fields: [airportIata], references: [iata], onDelete: Cascade)
+  acceptedPrograms AcceptedProgram[]
+  rules            LoungeRule[]
+
+  @@index([airportIata])
+}
+
+model AcceptedProgram {
+  id       String @id @default(cuid())
+  loungeId String
+  program  String
+
+  lounge Lounge @relation(fields: [loungeId], references: [id], onDelete: Cascade)
+
+  @@index([loungeId])
+  @@unique([loungeId, program])
+}
+
+model LoungeRule {
+  id       String @id @default(cuid())
+  loungeId String
+  label    String
+  value    String
+
+  lounge Lounge @relation(fields: [loungeId], references: [id], onDelete: Cascade)
+
+  @@index([loungeId])
+}

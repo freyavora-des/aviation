@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 
 import { getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { hasAccess, LOUNGES } from "@/lib/lounges";
+import { hasAccess } from "@/lib/lounges";
 
 export default async function LoungesPage() {
   const user = await getCurrentUser();
@@ -17,7 +17,11 @@ export default async function LoungesPage() {
   if (cards.length === 0) redirect("/onboarding/cards");
 
   const programs = cards.map((c) => c.program);
-  const airportLounges = LOUNGES.filter((l) => l.airportIata === user.selectedAirportIata);
+  const airportLounges = await prisma.lounge.findMany({
+    where: { airportIata: user.selectedAirportIata },
+    include: { acceptedPrograms: true, rules: true },
+    orderBy: { name: "asc" },
+  });
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-12">
@@ -51,11 +55,12 @@ export default async function LoungesPage() {
         {airportLounges.length === 0 ? (
           <div className="rounded-2xl border border-slate-200 bg-white p-6 text-slate-700">
             No lounge data for <span className="font-semibold">{user.selectedAirportIata}</span>{" "}
-            yet (demo dataset). Add more airports/lounges in <code>lib/lounges.ts</code>.
+            yet. Seed/import lounge data to populate this view.
           </div>
         ) : (
           airportLounges.map((l) => {
-            const access = hasAccess(programs, l.acceptedPrograms);
+            const accepted = l.acceptedPrograms.map((p) => p.program);
+            const access = hasAccess(programs, accepted);
             return (
               <div key={l.id} className="rounded-2xl border border-slate-200 bg-white p-6">
                 <div className="flex flex-wrap items-start justify-between gap-4">
@@ -82,7 +87,7 @@ export default async function LoungesPage() {
                 </div>
 
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {l.acceptedPrograms.map((p) => (
+                  {accepted.map((p) => (
                     <span
                       key={p}
                       className="rounded-full bg-skybrand-50 px-3 py-1 text-xs font-semibold text-skybrand-700 ring-1 ring-skybrand-200"

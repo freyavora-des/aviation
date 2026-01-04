@@ -1,10 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 
 type AirportResult = { iata: string; name: string; city: string; country: string };
 
 export default function LocationChooser() {
+  const router = useRouter();
   const [mode, setMode] = useState<"auto" | "manual" | null>(null);
   const [status, setStatus] = useState<string>("");
   const [query, setQuery] = useState("");
@@ -38,8 +40,7 @@ export default function LocationChooser() {
           fd.set("iata", data.iata);
           const save = await fetch("/api/onboarding/airport", { method: "POST", body: fd });
           // The server responds with a redirect.
-          if (save.redirected) window.location.href = save.url;
-          else window.location.href = "/onboarding/cards";
+          router.push(save.redirected ? save.url : "/onboarding/cards");
         } catch {
           setStatus("Something went wrong. Please try manual search.");
         }
@@ -65,8 +66,7 @@ export default function LocationChooser() {
     const fd = new FormData();
     fd.set("iata", iata);
     const save = await fetch("/api/onboarding/airport", { method: "POST", body: fd });
-    if (save.redirected) window.location.href = save.url;
-    else window.location.href = "/onboarding/cards";
+    router.push(save.redirected ? save.url : "/onboarding/cards");
   }
 
   return (

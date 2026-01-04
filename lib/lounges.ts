@@ -17,8 +17,8 @@ export type Lounge = {
   rules: LoungeRule[];
 };
 
-// Demo data to make the UI functional end-to-end.
-// Swap this out later for a real lounge dataset/API.
+// Seed data to make the UI functional end-to-end.
+// Replace later with a real lounge dataset import.
 export const LOUNGES: Lounge[] = [
   {
     id: "lax-pp-1",
