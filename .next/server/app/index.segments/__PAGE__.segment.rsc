@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[97367,["/_next/static/chunks/4fd93823156e59e8.js"],"OutletBoundary"]
+3:"$Sreact.suspense"
+0:{"buildId":"lwFjq5f_TjBUERenJqfRI","rsc":["$","$1","c",{"children":[["$","main",null,{"className":"mx-auto flex min-h-dvh max-w-4xl flex-col justify-center px-6 py-16","children":["$","div",null,{"className":"rounded-2xl border border-white/10 bg-white/5 p-8 shadow-glow","children":[["$","p",null,{"className":"text-sm font-medium tracking-wide text-skybrand-200","children":"Next.js local hosting is working"}],["$","h1",null,{"className":"mt-3 text-3xl font-semibold tracking-tight","children":"Aviation app"}],["$","p",null,{"className":"mt-4 text-slate-200/90","children":["This repository was missing an ",["$","code",null,{"className":"text-slate-100","children":"app/"}]," ","router entrypoint. You can now run ",["$","code",null,{"className":"text-slate-100","children":"npm run dev"}]," ","and open ",["$","code",null,{"className":"text-slate-100","children":"http://localhost:3000"}],"."]}]]}]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"loading":null,"isPartial":false}
+4:null
